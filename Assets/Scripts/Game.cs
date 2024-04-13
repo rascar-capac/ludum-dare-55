@@ -1,12 +1,11 @@
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class Game : MonoBehaviour
 {
-    public static GameManager Instance {get; private set;}
+    public static Game Instance {get; private set;}
+    public static GameData Data => Instance._data;
 
-    public GameData GameData => _gameData;
-
-    [SerializeField] private GameData _gameData;
+    [SerializeField] private GameData _data;
 
     private void Awake()
     {
