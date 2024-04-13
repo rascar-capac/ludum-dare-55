@@ -4,4 +4,5 @@ using UnityEngine;
 public class GameData : ScriptableObject
 {
     public float SpawningCircleRadius;
+    public float SpawningCooldown;
 }

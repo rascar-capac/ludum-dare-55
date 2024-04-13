@@ -2,12 +2,21 @@ using UnityEngine;
 
 public class MinionSpawner : MonoBehaviour
 {
+    public bool CanSpawn => Time.time > _nextAvailableTime;
+
     [SerializeField] private Minion _minionPrefab;
     [SerializeField] private MinionsManager _minionsManager;
     [SerializeField] private Transform _origin;
 
+    private float _nextAvailableTime;
+
     public void SpawnMinion(int count)
     {
+        if(!CanSpawn)
+        {
+            return;
+        }
+
         for(int minionIndex = 0; minionIndex < count; minionIndex++)
         {
             var position = GetSpawningPosition();
@@ -15,6 +24,8 @@ public class MinionSpawner : MonoBehaviour
             //TODO: random flip
             _minionsManager.AddMinion(minion);
         }
+
+        _nextAvailableTime = Time.time + GameManager.Instance.GameData.SpawningCooldown;
     }
 
     private Vector2 GetSpawningPosition()
