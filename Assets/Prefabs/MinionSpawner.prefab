@@ -46,3 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minionPrefab: {fileID: 3242282151905432009, guid: 11fdeaa329252c84a9af52816350e1ac, type: 3}
   _minionsManager: {fileID: 0}
+  _origin: {fileID: 0}
+  _button: {fileID: 0}
+  _fist: {fileID: 0}
+  _signal: {fileID: 0}
+  _signalRenderTexture: {fileID: 8400000, guid: 6058717357197eb4ca07e543f0a54de7, type: 2}

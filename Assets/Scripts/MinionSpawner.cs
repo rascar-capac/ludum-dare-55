@@ -9,9 +9,20 @@ public class MinionSpawner : MonoBehaviour
     [SerializeField] private Transform _origin;
     [SerializeField] private SpriteRenderer _button;
     [SerializeField] private SpriteRenderer _fist;
+    [SerializeField] private SpriteRenderer _signal;
+    [SerializeField] private RenderTexture _signalRenderTexture;
 
     private Vector2 _fistUpPosition;
     private float _nextAvailableTime;
+
+    private void SpawnMinions()
+    {
+        float signalIntensity01 = TexturePositionHelper.GetSignalValue01AtX(_signalRenderTexture, 0.5f);
+        int minion_count = Mathf.RoundToInt(Mathf.Lerp( 1, 5, signalIntensity01));
+        SpawnMinion(minion_count);
+
+        Debug.Log($"Signal={signalIntensity01}, spawned {minion_count}");
+    }
 
     public void SpawnMinion(int count)
     {
@@ -58,7 +69,7 @@ public class MinionSpawner : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            SpawnMinion(1);
+            SpawnMinions();
         }
 
         UpdateFistPosition();
@@ -96,5 +107,15 @@ public class MinionSpawner : MonoBehaviour
     {
         HandleInput();
         UpdateCooldownFeedbacks();
+    }
+
+    private void LateUpdate()
+    {
+        Graphics.Blit(_signal.sprite.texture, _signalRenderTexture,  _signal.material);
+    }
+
+    private void OnApplicationQuit()
+    {
+        _signalRenderTexture.Release();
     }
 }

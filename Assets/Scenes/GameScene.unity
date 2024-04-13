@@ -537,6 +537,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8162253226469000902}
     - target: {fileID: 6781401389716552023, guid: e15fe6508322b2240aab97333f73e559, type: 3}
+      propertyPath: _signal
+      value: 
+      objectReference: {fileID: 8162253226469000903}
+    - target: {fileID: 6781401389716552023, guid: e15fe6508322b2240aab97333f73e559, type: 3}
       propertyPath: _minionsManager
       value: 
       objectReference: {fileID: 2524010892579205821}
@@ -613,6 +617,11 @@ PrefabInstance:
 --- !u!4 &8162253226469000902 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7853336700420113898, guid: 9753e1cd91fbcd240a07ca55d9b9871e, type: 3}
+  m_PrefabInstance: {fileID: 8162253226469000901}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &8162253226469000903 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8859772078236354387, guid: 9753e1cd91fbcd240a07ca55d9b9871e, type: 3}
   m_PrefabInstance: {fileID: 8162253226469000901}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
