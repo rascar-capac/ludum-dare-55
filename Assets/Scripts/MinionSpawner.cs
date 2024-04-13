@@ -7,6 +7,7 @@ public class MinionSpawner : MonoBehaviour
     [SerializeField] private Minion _minionPrefab;
     [SerializeField] private MinionsManager _minionsManager;
     [SerializeField] private Transform _origin;
+    [SerializeField] private SpriteRenderer _platform;
     [SerializeField] private SpriteRenderer _button;
     [SerializeField] private SpriteRenderer _fist;
     [SerializeField] private SpriteRenderer _signal;
@@ -36,6 +37,7 @@ public class MinionSpawner : MonoBehaviour
             var position = GetSpawningPosition();
             var minion = Instantiate(_minionPrefab, position, Quaternion.identity);
             //TODO: random flip
+            minion.Initialize(_platform, _button);
             _minionsManager.AddMinion(minion);
         }
 

@@ -133,6 +133,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2996592627210434076, guid: c6c4ad364b87a8c4090505ed4052d737, type: 3}
   m_PrefabInstance: {fileID: 6691742854562169570}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1205299878 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 386195614689515396, guid: e2447b4bbbe66a8498047e780c7cc677, type: 3}
+  m_PrefabInstance: {fileID: 5839505557413201206}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1502074158
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,6 +545,10 @@ PrefabInstance:
       propertyPath: _signal
       value: 
       objectReference: {fileID: 8162253226469000903}
+    - target: {fileID: 6781401389716552023, guid: e15fe6508322b2240aab97333f73e559, type: 3}
+      propertyPath: _platform
+      value: 
+      objectReference: {fileID: 1205299878}
     - target: {fileID: 6781401389716552023, guid: e15fe6508322b2240aab97333f73e559, type: 3}
       propertyPath: _minionsManager
       value: 

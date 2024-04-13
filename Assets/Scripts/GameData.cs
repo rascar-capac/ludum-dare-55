@@ -7,4 +7,7 @@ public class GameData : ScriptableObject
     public float SpawningCircleRadius;
     public float SpawningCooldown;
     public Gradient ButtonGradient;
+
+    [Header("Minions")]
+    public float MovementUnitsPerSecond;
 }
