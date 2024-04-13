@@ -123,6 +123,16 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!212 &465063768 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3971052891812997539, guid: c6c4ad364b87a8c4090505ed4052d737, type: 3}
+  m_PrefabInstance: {fileID: 6691742854562169570}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &465063769 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2996592627210434076, guid: c6c4ad364b87a8c4090505ed4052d737, type: 3}
+  m_PrefabInstance: {fileID: 6691742854562169570}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1502074158
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,7 +429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2996592627210434076, guid: c6c4ad364b87a8c4090505ed4052d737, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.49
+      value: 2.81
       objectReference: {fileID: 0}
     - target: {fileID: 2996592627210434076, guid: c6c4ad364b87a8c4090505ed4052d737, type: 3}
       propertyPath: m_LocalPosition.z
@@ -515,6 +525,10 @@ PrefabInstance:
       value: MinionSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 6781401389716552023, guid: e15fe6508322b2240aab97333f73e559, type: 3}
+      propertyPath: _fist
+      value: 
+      objectReference: {fileID: 465063768}
+    - target: {fileID: 6781401389716552023, guid: e15fe6508322b2240aab97333f73e559, type: 3}
       propertyPath: _button
       value: 
       objectReference: {fileID: 767637944672293251}
@@ -526,6 +540,14 @@ PrefabInstance:
       propertyPath: _minionsManager
       value: 
       objectReference: {fileID: 2524010892579205821}
+    - target: {fileID: 6781401389716552023, guid: e15fe6508322b2240aab97333f73e559, type: 3}
+      propertyPath: _fistUpTransform
+      value: 
+      objectReference: {fileID: 465063769}
+    - target: {fileID: 6781401389716552023, guid: e15fe6508322b2240aab97333f73e559, type: 3}
+      propertyPath: _fistDownTransform
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

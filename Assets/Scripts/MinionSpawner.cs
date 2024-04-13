@@ -8,7 +8,9 @@ public class MinionSpawner : MonoBehaviour
     [SerializeField] private MinionsManager _minionsManager;
     [SerializeField] private Transform _origin;
     [SerializeField] private SpriteRenderer _button;
+    [SerializeField] private SpriteRenderer _fist;
 
+    private Vector2 _fistUpPosition;
     private float _nextAvailableTime;
 
     public void SpawnMinion(int count)
@@ -52,6 +54,29 @@ public class MinionSpawner : MonoBehaviour
         //TODO: add spread effect when ready
     }
 
+    private void HandleInput()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            SpawnMinion(1);
+        }
+
+        UpdateFistPosition();
+    }
+
+    private void UpdateFistPosition()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            _fist.transform.position = _button.transform.position;
+        }
+
+        if(Input.GetKeyUp(KeyCode.Space))
+        {
+            _fist.transform.position = _fistUpPosition;
+        }
+    }
+
     [ContextMenu("Spawn minion")]
     private void SpawnMinion()
     {
@@ -61,13 +86,15 @@ public class MinionSpawner : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        _fistUpPosition = _fist.transform.position;
+        UpdateFistPosition();
+    }
+
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            SpawnMinion(1);
-        }
-
+        HandleInput();
         UpdateCooldownFeedbacks();
     }
 }
