@@ -41,18 +41,32 @@ public class Minion : MonoBehaviour
 
     public bool TryGetTarget(out Target target)
     {
+        bool nearestMinionFound = _manager.TryGetNearestMinion(this, out Minion nearestMinion);
+
         if(_isEnemy)
         {
-            //TODO: return nearest minion if in detection area
-            target = Game.Environment.ButtonBox;
+            if(nearestMinionFound && IsAtDefenseDistance(nearestMinion._health))
+            {
+                target = nearestMinion._health;
 
-            return true;
+                return true;
+            }
+
+            if(!Game.Environment.ButtonBox.IsDead)
+            {
+                target = Game.Environment.ButtonBox;
+
+                return true;
+            }
+
+            target = null;
+
+            return false;
         }
 
-        bool nearest_minion_found = _manager.TryGetNearestMinion(this, out Minion nearestMinion);
-        target = nearest_minion_found ? nearestMinion.Health : null;
+        target = nearestMinionFound ? nearestMinion.Health : null;
 
-        return nearest_minion_found;
+        return nearestMinionFound;
     }
 
     public void UpdateTarget()
@@ -63,6 +77,11 @@ public class Minion : MonoBehaviour
         }
 
         CurrentState.UpdateTarget();
+    }
+
+    public bool IsAtDefenseDistance(Target target)
+    {
+        return Vector3.Distance(transform.position, target.SpriteRenderer.bounds.ClosestPoint(transform.position)) < Game.Data.EnemyDefensiveAttackDistance;
     }
 
     public bool CanAttack(Target target)

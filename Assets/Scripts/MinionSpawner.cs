@@ -5,7 +5,7 @@ public class MinionSpawner : ASpawner
     public override void SpawnMinions()
     {
         float signalIntensity01 = Game.Environment.GetSignalIntensity01();
-        int minionCount = Mathf.RoundToInt(Mathf.Lerp( 1, 5, signalIntensity01));
+        int minionCount = Mathf.RoundToInt(Mathf.Lerp( Game.Data.MinimumCount, Game.Data.MaximumCount, signalIntensity01));
         SpawnMinions(minionCount);
 
         Debug.Log($"Signal={signalIntensity01}, spawned {minionCount}");

@@ -56,6 +56,11 @@ public class MinionsManager : MonoBehaviour
 
         foreach(Minion minion in subset ?? _adversaryManager._minions)
         {
+            if(minion.IsDead)
+            {
+                continue;
+            }
+
             float distance = Vector3.Distance(origin, minion.transform.position);
 
             if(distance < minDistance)

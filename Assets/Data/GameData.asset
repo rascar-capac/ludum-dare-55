@@ -44,6 +44,8 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
+  MinimumCount: 1
+  MaximumCount: 1
   EnemySpawningPeriod: 5
   UnitsPerSecondWhenWandering: 0.5
   UnitsPerSecondWhenRunning: 1
@@ -52,6 +54,7 @@ MonoBehaviour:
   EnemyDamagePerHit: 1
   EnemyAttackPeriod: 1
   AttackDistance: 1
+  EnemyDefensiveAttackDistance: 2
   MinionHealth: 3
   EnemyHealth: 3
   ButtonHealth: 3

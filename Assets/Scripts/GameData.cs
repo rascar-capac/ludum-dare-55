@@ -7,6 +7,8 @@ public class GameData : ScriptableObject
     public float SpawningCircleRadius;
     public float SpawningCooldown;
     public Gradient ButtonGradient;
+    public int MinimumCount;
+    public int MaximumCount;
 
     [Header("Enemy spawning")]
     public float EnemySpawningPeriod;
@@ -21,6 +23,7 @@ public class GameData : ScriptableObject
     public float EnemyDamagePerHit;
     public float EnemyAttackPeriod;
     public float AttackDistance;
+    public float EnemyDefensiveAttackDistance;
 
     [Header("Health")]
     public float MinionHealth;
