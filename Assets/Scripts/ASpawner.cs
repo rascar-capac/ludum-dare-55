@@ -6,6 +6,7 @@ public abstract class ASpawner : MonoBehaviour
     public bool CanSpawn => Time.time > _nextAvailableTime;
 
     [SerializeField] protected Minion _minionPrefab;
+    [SerializeField] protected MinionsManager _minionsManager;
 
     protected float _nextAvailableTime;
 

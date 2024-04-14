@@ -60,3 +60,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minionPrefab: {fileID: 3242282151905432009, guid: 11fdeaa329252c84a9af52816350e1ac, type: 3}
+  _minionsManager: {fileID: 7873343695306720327}

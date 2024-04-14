@@ -17,7 +17,7 @@ public class EnemyMinionSpawner : ASpawner
         float outerRadius = Game.Environment.Platform.extents.x;
         float innerRadius = outerRadius * 0.9f;
         Vector2 positionInBelt = VectorHelper.GetRandomPositionInBelt(Game.Environment.Origin.position, innerRadius, outerRadius);
-        Vector2 ellipsisBelt = new(positionInBelt.x, positionInBelt.y * Game.Environment.GetPlatformEllipsisRatio());
+        Vector2 ellipsisBelt = Game.Environment.GetEllipsisVector(positionInBelt);
 
         return ellipsisBelt;
     }

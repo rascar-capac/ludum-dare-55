@@ -30,8 +30,8 @@ public class MinionWanderingState : AMinionState
     {
         Vector2 normalizedDirection = (_currentDestination - _minion.transform.position.ToVector2()).normalized;
         float dot = Vector2.Dot(Vector2.right, normalizedDirection);
-        float ellipsis_factor = Mathf.Lerp(Game.Environment.GetPlatformEllipsisRatio() * 0.1f, 1, Mathf.Abs(dot));
-        _minion.transform.Translate(Game.Data.UnitsPerSecondWhenWandering * Time.deltaTime * ellipsis_factor * normalizedDirection);
+        float ellipsisFactor = Mathf.Lerp(Game.Environment.GetEllipsisFactor(), 1, Mathf.Abs(dot));
+        _minion.transform.Translate(Game.Data.UnitsPerSecondWhenWandering * Time.deltaTime * ellipsisFactor * normalizedDirection);
 
         if(VectorHelper.Approximately(_minion.transform.position, _currentDestination))
         {
@@ -44,7 +44,7 @@ public class MinionWanderingState : AMinionState
         float innerRadius = Game.Environment.Origin.position.x + Game.Data.SpawningCircleRadius;
         float outerRadius = Game.Environment.Platform.extents.x;
         Vector2 destination = VectorHelper.GetRandomPositionInBelt(Game.Environment.Origin.position, innerRadius, outerRadius);
-        Vector2 ellipsisDestination = new(destination.x, destination.y * Game.Environment.GetPlatformEllipsisRatio());
+        Vector2 ellipsisDestination = Game.Environment.GetEllipsisVector(destination);
 
         return ellipsisDestination;
     }

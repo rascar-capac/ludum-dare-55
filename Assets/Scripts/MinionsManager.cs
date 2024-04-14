@@ -44,6 +44,25 @@ public class MinionsManager : MonoBehaviour
         return nearestMinion != null;
     }
 
+    public bool TryGetNearestMinion(Vector2 origin, out Minion nearestMinion, List<Minion> subset = null)
+    {
+        float minDistance = float.MaxValue;
+        nearestMinion = null;
+
+        foreach(Minion minion in subset ?? _adversaryManager._minions)
+        {
+            float distance = Vector3.Distance(origin, minion.transform.position);
+
+            if(distance < minDistance)
+            {
+                minDistance = distance;
+                nearestMinion = minion;
+            }
+        }
+
+        return nearestMinion != null;
+    }
+
     private void Spawner_OnMinionSpawned(Minion minion)
     {
         AddMinion(minion);

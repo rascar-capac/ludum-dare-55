@@ -23,9 +23,14 @@ public class EnvironmentHolder : MonoBehaviour
         return GetSignalValue01AtX(_signalRenderTexture, 0.5f);
     }
 
-    public float GetPlatformEllipsisRatio()
+    public float GetEllipsisFactor()
     {
         return Platform.extents.y / Platform.extents.x;
+    }
+
+    public Vector2 GetEllipsisVector(Vector2 originalVector)
+    {
+        return new Vector2(originalVector.x, originalVector.y * GetEllipsisFactor());
     }
 
     private void Awake()

@@ -353,6 +353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minionPrefab: {fileID: 5215494207520917684, guid: ed05831966d3c6f4497d029c6f6c62c8, type: 3}
+  _minionsManager: {fileID: 1549147907}
 --- !u!1001 &1715240036
 PrefabInstance:
   m_ObjectHideFlags: 0

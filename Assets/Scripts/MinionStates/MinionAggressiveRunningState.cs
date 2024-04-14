@@ -28,7 +28,7 @@ public class MinionAggressiveRunState : AMinionState
     {
         Vector2 normalizedDirection = (_currentTargetPosition - _minion.transform.position.ToVector2()).normalized;
         float dot = Vector2.Dot(Vector2.right, normalizedDirection);
-        float ellipsis_factor = Mathf.Lerp(Game.Environment.GetPlatformEllipsisRatio() * 0.1f, 1, Mathf.Abs(dot));
+        float ellipsis_factor = Mathf.Lerp(Game.Environment.GetEllipsisFactor(), 1, Mathf.Abs(dot));
         _minion.transform.Translate(Game.Data.UnitsPerSecondWhenRunning * Time.deltaTime * ellipsis_factor * normalizedDirection);
     }
 }
