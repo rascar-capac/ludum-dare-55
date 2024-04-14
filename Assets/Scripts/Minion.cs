@@ -5,13 +5,8 @@ public class Minion : MonoBehaviour
 {
     public AMinionState CurrentState {get; private set;}
 
-    private SpriteRenderer _platform;
-    private SpriteRenderer _button;
-
-    public void Initialize(SpriteRenderer platform, SpriteRenderer button)
+    public void Initialize()
     {
-        _platform = platform;
-        _button = button;
         SetState(EState.Wandering);
     }
 
@@ -19,7 +14,8 @@ public class Minion : MonoBehaviour
     {
         CurrentState = stateType switch
         {
-            EState.Wandering => new MinionWanderingState(this, _platform.bounds, _button.bounds),
+            EState.None => null,
+            EState.Wandering => new MinionWanderingState(this),
             _ => throw new NotImplementedException()
         };
     }
@@ -46,6 +42,7 @@ public class Minion : MonoBehaviour
 
     public enum EState
     {
+        None = -1,
         Wandering = 0,
     }
 }

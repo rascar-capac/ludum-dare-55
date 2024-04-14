@@ -1,0 +1,40 @@
+using UnityEngine;
+
+public abstract class ASpawner : MonoBehaviour
+{
+    public bool CanSpawn => Time.time > _nextAvailableTime;
+
+    [SerializeField] protected Minion _minionPrefab;
+    [SerializeField] protected MinionsManager _minionsManager;
+
+    protected float _nextAvailableTime;
+
+    public abstract void SpawnMinions();
+    protected abstract Vector2 GetSpawningPosition();
+    protected abstract float GetNextAvailableSpawningTime();
+
+    protected void SpawnMinions(int count)
+    {
+        if(!CanSpawn)
+        {
+            return;
+        }
+
+        for(int minionIndex = 0; minionIndex < count; minionIndex++)
+        {
+            SpawnMinion();
+        }
+
+        _nextAvailableTime = GetNextAvailableSpawningTime();
+    }
+
+    [ContextMenu("Spawn minion")]
+    protected void SpawnMinion()
+    {
+        var position = GetSpawningPosition();
+        var minion = Instantiate(_minionPrefab, position, Quaternion.identity);
+        //TODO: random flip
+        minion.Initialize();
+        _minionsManager.AddMinion(minion);
+    }
+}

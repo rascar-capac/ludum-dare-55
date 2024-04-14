@@ -4,14 +4,10 @@ public class MinionWanderingState : AMinionState
 {
     private Vector2 _currentDestination;
     private Minion _minion;
-    private Bounds _platform;
-    private Bounds _button;
 
-    public MinionWanderingState(Minion minion, Bounds platform, Bounds button)
+    public MinionWanderingState(Minion minion)
     {
         _minion = minion;
-        _platform = platform;
-        _button = button;
         _currentDestination = GetRandomDestination();
     }
 
@@ -29,9 +25,11 @@ public class MinionWanderingState : AMinionState
     private void Wander()
     {
         Vector2 normalizedDirection = (_currentDestination - _minion.transform.position.ToVector2()).normalized;
-        _minion.transform.Translate(Game.Data.MovementUnitsPerSecond * Time.deltaTime * normalizedDirection);
+        float dot = Vector2.Dot(Vector2.right, normalizedDirection);
+        float ellipsis_factor = Mathf.Lerp(Game.Environment.GetPlatformEllipsisRatio() * 0.1f, 1, Mathf.Abs(dot));
+        _minion.transform.Translate(Game.Data.MovementUnitsPerSecond * Time.deltaTime * ellipsis_factor * normalizedDirection);
 
-        if(VectorExtensions.Approximately(_minion.transform.position, _currentDestination))
+        if(VectorHelper.Approximately(_minion.transform.position, _currentDestination))
         {
             _currentDestination = GetRandomDestination();
         }
@@ -39,14 +37,11 @@ public class MinionWanderingState : AMinionState
 
     private Vector2 GetRandomDestination()
     {
-        Vector2 destination;
+        float innerRadius = Game.Environment.Origin.position.x + Game.Data.SpawningCircleRadius;
+        float outerRadius = Game.Environment.Platform.extents.x;
+        Vector2 destination = VectorHelper.GetRandomPositionInBelt(Game.Environment.Origin.position, innerRadius, outerRadius);
+        Vector2 ellipsisDestination = new(destination.x, destination.y * Game.Environment.GetPlatformEllipsisRatio());
 
-        do
-        {
-           destination = _platform.center.ToVector2() + Random.insideUnitCircle * _platform.extents.ToVector2();
-        }
-        while(_button.Contains(destination));
-
-        return destination;
+        return ellipsisDestination;
     }
 }

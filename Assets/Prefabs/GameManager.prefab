@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8904821731850037564}
   - component: {fileID: 843200559521620974}
+  - component: {fileID: 1041764967839494973}
+  - component: {fileID: 3960862050400202145}
+  - component: {fileID: 9202322440908322762}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,3 +48,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: c83b767c3a851274982ae0345a3a9123, type: 2}
+  _environment: {fileID: 1041764967839494973}
+--- !u!114 &1041764967839494973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228704234723866151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 449cd0862ae676c418b1464310c6138f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _origin: {fileID: 0}
+  _platform: {fileID: 0}
+  _button: {fileID: 0}
+  _signal: {fileID: 0}
+  _signalRenderTexture: {fileID: 8400000, guid: 6058717357197eb4ca07e543f0a54de7, type: 2}
+  _fist: {fileID: 0}
+--- !u!114 &3960862050400202145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228704234723866151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 065375d576c46384488b0abeee1f081a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minionPrefab: {fileID: 3242282151905432009, guid: 11fdeaa329252c84a9af52816350e1ac, type: 3}
+  _minionsManager: {fileID: 0}
+--- !u!114 &9202322440908322762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228704234723866151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b0d91c5c510ebd43a1e2a737181efbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minionPrefab: {fileID: 5215494207520917684, guid: ed05831966d3c6f4497d029c6f6c62c8, type: 3}
+  _minionsManager: {fileID: 0}
