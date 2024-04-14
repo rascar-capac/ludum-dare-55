@@ -4,7 +4,10 @@ public class MinionAggressiveRunningState : AMinionState
 {
     private Target _currentTarget;
 
-    public MinionAggressiveRunningState(Minion minion) : base(minion) { }
+    public MinionAggressiveRunningState(Minion minion) : base(minion)
+    {
+        _minion.Animator.SetTrigger("run");
+    }
 
     public override void Update()
     {
@@ -37,6 +40,8 @@ public class MinionAggressiveRunningState : AMinionState
         {
             _currentTarget.OnDied.RemoveListener(Target_OnDied);
         }
+
+        _minion.Animator.SetTrigger("idle");
     }
 
     public override void DrawGizmos()
@@ -53,6 +58,7 @@ public class MinionAggressiveRunningState : AMinionState
     private void Run()
     {
         Vector2 normalizedDirection = (_currentTarget.transform.position - _minion.transform.position).normalized;
+        _minion.SetSpriteDirection(normalizedDirection);
         float dot = Vector2.Dot(Vector2.right, normalizedDirection);
         float ellipsis_factor = Mathf.Lerp(Game.Environment.GetEllipsisFactor(), 1, Mathf.Abs(dot));
         _minion.transform.Translate(Game.Data.UnitsPerSecondWhenRunning * Time.deltaTime * ellipsis_factor * normalizedDirection);

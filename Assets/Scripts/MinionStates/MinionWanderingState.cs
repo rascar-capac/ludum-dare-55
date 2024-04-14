@@ -7,6 +7,7 @@ public class MinionWanderingState : AMinionState
     public MinionWanderingState(Minion minion) : base(minion)
     {
         _currentDestination = GetRandomDestination();
+        _minion.Animator.SetTrigger("walk");
     }
 
     public override void Update()
@@ -26,9 +27,15 @@ public class MinionWanderingState : AMinionState
         Gizmos.DrawLine(_minion.transform.position, _currentDestination);
     }
 
+    public override void CleanUp()
+    {
+        _minion.Animator.SetTrigger("idle");
+    }
+
     private void Wander()
     {
         Vector2 normalizedDirection = (_currentDestination - _minion.transform.position.ToVector2()).normalized;
+        _minion.SetSpriteDirection(normalizedDirection);
         float dot = Vector2.Dot(Vector2.right, normalizedDirection);
         float ellipsisFactor = Mathf.Lerp(Game.Environment.GetEllipsisFactor(), 1, Mathf.Abs(dot));
         _minion.transform.Translate(Game.Data.UnitsPerSecondWhenWandering * Time.deltaTime * ellipsisFactor * normalizedDirection);

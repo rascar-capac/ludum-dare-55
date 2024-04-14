@@ -26,9 +26,14 @@ public class Target : MonoBehaviour
 
         if(Health <= 0)
         {
-            _spriteRenderer.color = Game.Data.DeadColor;
-            OnDied.Invoke();
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        _spriteRenderer.color = Game.Data.DeadColor;
+        OnDied.Invoke();
     }
 
     private IEnumerator ApplyDamageColorFlashRoutine()

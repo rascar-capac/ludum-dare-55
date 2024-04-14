@@ -20,6 +20,8 @@ public class MinionButtonAttackingState : AMinionState
         {
             _currentTarget.OnDied.AddListener(Target_OnDied);
         }
+
+        _minion.Animator.SetTrigger("idle");
     }
 
     public override void Update()
@@ -37,11 +39,16 @@ public class MinionButtonAttackingState : AMinionState
         {
             _currentTarget.OnDied.RemoveListener(Target_OnDied);
         }
+
+        _minion.Animator.SetTrigger("idle");
     }
 
     private void Attack()
     {
+        Vector2 normalizedDirection = (_currentTarget.transform.position - _minion.transform.position).normalized;
+        _minion.SetSpriteDirection(normalizedDirection);
         _currentTarget.TakeDamage(_minion.IsEnemy ? Game.Data.EnemyDamagePerHit : Game.Data.MinionDamagePerHit);
+        _minion.Animator.SetTrigger("attack");
     }
 
     private void Target_OnDied()

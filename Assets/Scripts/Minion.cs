@@ -8,9 +8,11 @@ public class Minion : MonoBehaviour
     public Target Health => _health;
     public bool IsEnemy => _isEnemy;
     public bool IsDead => Health.IsDead;
+    public Animator Animator => _animator;
 
     [SerializeField] private bool _isEnemy;
     [SerializeField] Target _health;
+    [SerializeField] private Animator _animator;
 
     private MinionsManager _manager;
 
@@ -84,6 +86,11 @@ public class Minion : MonoBehaviour
         return Vector3.Distance(transform.position, target.SpriteRenderer.bounds.ClosestPoint(transform.position)) < Game.Data.EnemyDefensiveAttackDistance;
     }
 
+    public void SetSpriteDirection(Vector2 normalizedDirection)
+    {
+        _health.SpriteRenderer.flipX = Vector2.Dot(normalizedDirection, Vector2.right) < 0;
+    }
+
     public bool CanAttack(Target target)
     {
         return Vector3.Distance(transform.position, target.SpriteRenderer.bounds.ClosestPoint(transform.position)) < Game.Data.AttackDistance;
@@ -92,6 +99,7 @@ public class Minion : MonoBehaviour
     private void Health_OnDied()
     {
         SetState(EState.None);
+        _animator.SetTrigger("die");
     }
 
     private void Awake()

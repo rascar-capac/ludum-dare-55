@@ -47,8 +47,8 @@ MonoBehaviour:
   MinimumCount: 1
   MaximumCount: 1
   EnemySpawningPeriod: 5
-  UnitsPerSecondWhenWandering: 0.5
-  UnitsPerSecondWhenRunning: 1
+  UnitsPerSecondWhenWandering: 1
+  UnitsPerSecondWhenRunning: 2
   MinionDamagePerHit: 1
   MinionAttackPeriod: 1
   EnemyDamagePerHit: 1
