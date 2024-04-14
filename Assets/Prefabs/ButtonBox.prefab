@@ -264,6 +264,7 @@ GameObject:
   - component: {fileID: 7853336700420113898}
   - component: {fileID: 6957018394152403211}
   - component: {fileID: 1358275563209752009}
+  - component: {fileID: 4647180618120249373}
   m_Layer: 0
   m_Name: ButtonBox
   m_TagString: Untagged
@@ -352,3 +353,16 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!114 &4647180618120249373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5754683140698959137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6965d774640154a4a8a88c80a472db14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 6957018394152403211}

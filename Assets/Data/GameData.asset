@@ -47,3 +47,13 @@ MonoBehaviour:
   EnemySpawningPeriod: 5
   UnitsPerSecondWhenWandering: 0.5
   UnitsPerSecondWhenRunning: 1
+  MinionDamagePerHit: 1
+  MinionAttackPeriod: 1
+  EnemyDamagePerHit: 1
+  EnemyAttackPeriod: 1
+  AttackDistance: 1
+  MinionHealth: 3
+  EnemyHealth: 3
+  ButtonHealth: 3
+  DamageTakenColor: {r: 1, g: 0.90488863, b: 0, a: 1}
+  DeadColor: {r: 0, g: 0, b: 0, a: 1}

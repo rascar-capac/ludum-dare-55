@@ -32,6 +32,11 @@ public class MinionsManager : MonoBehaviour
                 continue;
             }
 
+            if(minion.IsDead)
+            {
+                continue;
+            }
+
             float distance = Vector3.Distance(originMinion.transform.position, minion.transform.position);
 
             if(distance < minDistance)

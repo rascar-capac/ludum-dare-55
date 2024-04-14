@@ -5,6 +5,7 @@ public abstract class AMinionState
     public abstract void Update();
     public virtual void UpdateTarget() { }
     public virtual void DrawGizmos() { }
+    public virtual void CleanUp() { }
 
     public AMinionState(Minion minion)
     {

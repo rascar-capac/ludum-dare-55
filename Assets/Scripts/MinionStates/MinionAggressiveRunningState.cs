@@ -1,16 +1,29 @@
 using UnityEngine;
 
-public class MinionAggressiveRunState : AMinionState
+public class MinionAggressiveRunningState : AMinionState
 {
-    private Vector2 _currentTargetPosition;
+    private Target _currentTarget;
 
-    public MinionAggressiveRunState(Minion minion) : base(minion) { }
+    public MinionAggressiveRunningState(Minion minion) : base(minion) { }
 
     public override void Update()
     {
-        if(_minion.TryGetTargetPosition(out _currentTargetPosition))
+        if(_currentTarget != null)
         {
-            Run();
+            _currentTarget.OnDied.RemoveListener(Target_OnDied);
+        }
+
+        if(_minion.TryGetTarget(out _currentTarget))
+        {
+            if(_minion.CanAttack(_currentTarget))
+            {
+                _minion.SetState(new MinionButtonAttackingState(_minion, _currentTarget));
+            }
+            else
+            {
+                Run();
+                _currentTarget.OnDied.AddListener(Target_OnDied);
+            }
         }
         else
         {
@@ -18,17 +31,36 @@ public class MinionAggressiveRunState : AMinionState
         }
     }
 
+    public override void CleanUp()
+    {
+        if(_currentTarget != null )
+        {
+            _currentTarget.OnDied.RemoveListener(Target_OnDied);
+        }
+    }
+
     public override void DrawGizmos()
     {
+        if(_currentTarget == null)
+        {
+            return;
+        }
+
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(_minion.transform.position, _currentTargetPosition);
+        Gizmos.DrawLine(_minion.transform.position, _currentTarget.transform.position);
     }
 
     private void Run()
     {
-        Vector2 normalizedDirection = (_currentTargetPosition - _minion.transform.position.ToVector2()).normalized;
+        Vector2 normalizedDirection = (_currentTarget.transform.position - _minion.transform.position).normalized;
         float dot = Vector2.Dot(Vector2.right, normalizedDirection);
         float ellipsis_factor = Mathf.Lerp(Game.Environment.GetEllipsisFactor(), 1, Mathf.Abs(dot));
         _minion.transform.Translate(Game.Data.UnitsPerSecondWhenRunning * Time.deltaTime * ellipsis_factor * normalizedDirection);
+    }
+
+    private void Target_OnDied()
+    {
+        _currentTarget.OnDied.RemoveListener(Target_OnDied);
+        _currentTarget = null;
     }
 }

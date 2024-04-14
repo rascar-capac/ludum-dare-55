@@ -458,7 +458,7 @@ PrefabInstance:
     - target: {fileID: 1041764967839494973, guid: 15c9152197aa2974198e54f04c15047d, type: 3}
       propertyPath: _buttonBox
       value: 
-      objectReference: {fileID: 8162253226469000906}
+      objectReference: {fileID: 8162253226469000908}
     - target: {fileID: 1228704234723866151, guid: 15c9152197aa2974198e54f04c15047d, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -880,6 +880,17 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6957018394152403211, guid: 9753e1cd91fbcd240a07ca55d9b9871e, type: 3}
   m_PrefabInstance: {fileID: 8162253226469000901}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8162253226469000908 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4647180618120249373, guid: 9753e1cd91fbcd240a07ca55d9b9871e, type: 3}
+  m_PrefabInstance: {fileID: 8162253226469000901}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6965d774640154a4a8a88c80a472db14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
