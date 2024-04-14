@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9172705767839410611}
   - component: {fileID: 7873343695306720327}
+  - component: {fileID: 2658751846160591052}
   m_Layer: 0
   m_Name: MinionsManager
   m_TagString: Untagged
@@ -44,3 +45,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f40c0c30a48c9142bce34aa1cc84d8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _adversaryManager: {fileID: 0}
+  _spawner: {fileID: 2658751846160591052}
+--- !u!114 &2658751846160591052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4717489595248477721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 065375d576c46384488b0abeee1f081a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minionPrefab: {fileID: 3242282151905432009, guid: 11fdeaa329252c84a9af52816350e1ac, type: 3}

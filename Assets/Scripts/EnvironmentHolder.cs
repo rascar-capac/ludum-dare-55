@@ -4,6 +4,7 @@ public class EnvironmentHolder : MonoBehaviour
 {
     public Transform Origin => _origin;
     public Bounds Platform => _platform.bounds;
+    public Bounds ButtonBox => _buttonBox.bounds;
     public SpriteRenderer Button => _button;
     public SpriteRenderer Signal => _signal;
     public SpriteRenderer Fist => _fist;
@@ -11,6 +12,7 @@ public class EnvironmentHolder : MonoBehaviour
 
     [SerializeField] private Transform _origin;
     [SerializeField] private SpriteRenderer _platform;
+    [SerializeField] private SpriteRenderer _buttonBox;
     [SerializeField] private SpriteRenderer _button;
     [SerializeField] private SpriteRenderer _signal;
     [SerializeField] private RenderTexture _signalRenderTexture;

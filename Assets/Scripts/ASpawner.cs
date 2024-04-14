@@ -1,13 +1,15 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class ASpawner : MonoBehaviour
 {
     public bool CanSpawn => Time.time > _nextAvailableTime;
 
     [SerializeField] protected Minion _minionPrefab;
-    [SerializeField] protected MinionsManager _minionsManager;
 
     protected float _nextAvailableTime;
+
+    public UnityEvent<Minion> OnMinionSpawned {get;} = new();
 
     public abstract void SpawnMinions();
     protected abstract Vector2 GetSpawningPosition();
@@ -34,7 +36,6 @@ public abstract class ASpawner : MonoBehaviour
         var position = GetSpawningPosition();
         var minion = Instantiate(_minionPrefab, position, Quaternion.identity);
         //TODO: random flip
-        minion.Initialize();
-        _minionsManager.AddMinion(minion);
+        OnMinionSpawned.Invoke(minion);
     }
 }

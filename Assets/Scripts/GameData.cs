@@ -12,6 +12,6 @@ public class GameData : ScriptableObject
     public float EnemySpawningPeriod;
 
     [Header("Minions")]
-    public float MovementUnitsPerSecond;
-
+    public float UnitsPerSecondWhenWandering;
+    public float UnitsPerSecondWhenRunning;
 }

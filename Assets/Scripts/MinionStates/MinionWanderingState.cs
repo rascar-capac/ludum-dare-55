@@ -3,11 +3,9 @@ using UnityEngine;
 public class MinionWanderingState : AMinionState
 {
     private Vector2 _currentDestination;
-    private Minion _minion;
 
-    public MinionWanderingState(Minion minion)
+    public MinionWanderingState(Minion minion) : base(minion)
     {
-        _minion = minion;
         _currentDestination = GetRandomDestination();
     }
 
@@ -16,9 +14,15 @@ public class MinionWanderingState : AMinionState
         Wander();
     }
 
+    public override void UpdateTarget()
+    {
+        //TODO: is it ok to trust that there are adversaries?
+        _minion.SetState(Minion.EState.AggressiveRunning);
+    }
+
     public override void DrawGizmos()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.blue;
         Gizmos.DrawLine(_minion.transform.position, _currentDestination);
     }
 
@@ -27,7 +31,7 @@ public class MinionWanderingState : AMinionState
         Vector2 normalizedDirection = (_currentDestination - _minion.transform.position.ToVector2()).normalized;
         float dot = Vector2.Dot(Vector2.right, normalizedDirection);
         float ellipsis_factor = Mathf.Lerp(Game.Environment.GetPlatformEllipsisRatio() * 0.1f, 1, Mathf.Abs(dot));
-        _minion.transform.Translate(Game.Data.MovementUnitsPerSecond * Time.deltaTime * ellipsis_factor * normalizedDirection);
+        _minion.transform.Translate(Game.Data.UnitsPerSecondWhenWandering * Time.deltaTime * ellipsis_factor * normalizedDirection);
 
         if(VectorHelper.Approximately(_minion.transform.position, _currentDestination))
         {

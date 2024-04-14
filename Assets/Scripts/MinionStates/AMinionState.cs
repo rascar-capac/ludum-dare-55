@@ -1,6 +1,13 @@
 public abstract class AMinionState
 {
-    public abstract void Update();
+    protected Minion _minion;
 
+    public abstract void Update();
+    public virtual void UpdateTarget() { }
     public virtual void DrawGizmos() { }
+
+    public AMinionState(Minion minion)
+    {
+        _minion = minion;
+    }
 }

@@ -190,6 +190,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3446970776338299982, guid: 11fdeaa329252c84a9af52816350e1ac, type: 3}
   m_PrefabInstance: {fileID: 909442954}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1158351385 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4717489595248477721, guid: fc6cc131adbc3424c93ce72f8eea423a, type: 3}
+  m_PrefabInstance: {fileID: 1549147905}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1205299878 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 386195614689515396, guid: e2447b4bbbe66a8498047e780c7cc677, type: 3}
@@ -250,10 +255,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -4.32
       objectReference: {fileID: 0}
+    - target: {fileID: 2658751846160591052, guid: fc6cc131adbc3424c93ce72f8eea423a, type: 3}
+      propertyPath: _minionPrefab
+      value: 
+      objectReference: {fileID: 5215494207520917684, guid: ed05831966d3c6f4497d029c6f6c62c8, type: 3}
     - target: {fileID: 4717489595248477721, guid: fc6cc131adbc3424c93ce72f8eea423a, type: 3}
       propertyPath: m_Name
       value: EnemyMinionsManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7873343695306720327, guid: fc6cc131adbc3424c93ce72f8eea423a, type: 3}
+      propertyPath: _spawner
+      value: 
+      objectReference: {fileID: 1549147908}
+    - target: {fileID: 7873343695306720327, guid: fc6cc131adbc3424c93ce72f8eea423a, type: 3}
+      propertyPath: _adversaryManager
+      value: 
+      objectReference: {fileID: 2524010892579205821}
     - target: {fileID: 9172705767839410611, guid: fc6cc131adbc3424c93ce72f8eea423a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -294,14 +311,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2658751846160591052, guid: fc6cc131adbc3424c93ce72f8eea423a, type: 3}
     m_RemovedGameObjects:
     - {fileID: 2285928482651480766, guid: fc6cc131adbc3424c93ce72f8eea423a, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 9172705767839410611, guid: fc6cc131adbc3424c93ce72f8eea423a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1715240037}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4717489595248477721, guid: fc6cc131adbc3424c93ce72f8eea423a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1549147908}
   m_SourcePrefab: {fileID: 100100000, guid: fc6cc131adbc3424c93ce72f8eea423a, type: 3}
 --- !u!4 &1549147906 stripped
 Transform:
@@ -313,12 +334,25 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7873343695306720327, guid: fc6cc131adbc3424c93ce72f8eea423a, type: 3}
   m_PrefabInstance: {fileID: 1549147905}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1158351385}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f40c0c30a48c9142bce34aa1cc84d8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1549147908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158351385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b0d91c5c510ebd43a1e2a737181efbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minionPrefab: {fileID: 5215494207520917684, guid: ed05831966d3c6f4497d029c6f6c62c8, type: 3}
 --- !u!1001 &1715240036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -381,6 +415,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5425104177749959987, guid: ed05831966d3c6f4497d029c6f6c62c8, type: 3}
   m_PrefabInstance: {fileID: 1715240036}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1715240038 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5215494207520917684, guid: ed05831966d3c6f4497d029c6f6c62c8, type: 3}
+  m_PrefabInstance: {fileID: 1715240036}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d52526331212e9b43b067789d346bcdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &28706856517843722
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -409,6 +454,10 @@ PrefabInstance:
       propertyPath: _platform
       value: 
       objectReference: {fileID: 1205299878}
+    - target: {fileID: 1041764967839494973, guid: 15c9152197aa2974198e54f04c15047d, type: 3}
+      propertyPath: _buttonBox
+      value: 
+      objectReference: {fileID: 8162253226469000906}
     - target: {fileID: 1228704234723866151, guid: 15c9152197aa2974198e54f04c15047d, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -572,6 +621,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: MinionsManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5107458218829658224, guid: fc6cc131adbc3424c93ce72f8eea423a, type: 3}
+      propertyPath: _minionPrefab
+      value: 
+      objectReference: {fileID: 1715240038}
+    - target: {fileID: 7873343695306720327, guid: fc6cc131adbc3424c93ce72f8eea423a, type: 3}
+      propertyPath: _adversaryManager
+      value: 
+      objectReference: {fileID: 1549147907}
     - target: {fileID: 9172705767839410611, guid: fc6cc131adbc3424c93ce72f8eea423a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

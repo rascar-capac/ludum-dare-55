@@ -28,6 +28,10 @@ PrefabInstance:
       propertyPath: IsEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3242282151905432009, guid: 11fdeaa329252c84a9af52816350e1ac, type: 3}
+      propertyPath: _isEnemy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3446970776338299982, guid: 11fdeaa329252c84a9af52816350e1ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
