@@ -29,7 +29,7 @@ public class MinionButtonAttackingState : AMinionState
         if(Time.time > _nextAttackTime)
         {
             Attack();
-            _nextAttackTime = Time.time + (_minion.IsEnemy ? Game.Data.EnemyAttackPeriod : Game.Data.MinionAttackPeriod);
+            _nextAttackTime = Time.time + (_minion.IsEnemy ? Game.Data.EnemyAttackPeriod : Game.Data.MinionAttackPeriod) * (Random.value + 0.5f);
         }
     }
 

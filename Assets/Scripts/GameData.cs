@@ -11,7 +11,9 @@ public class GameData : ScriptableObject
     public int MaximumCount;
 
     [Header("Enemy spawning")]
-    public float EnemySpawningPeriod;
+    public float MinEnemySpawningPeriod;
+    public float MaxEnemySpawningPeriod;
+    public float TotalCurveTime;
 
     [Header("Movement")]
     public float UnitsPerSecondWhenWandering;
@@ -30,5 +32,4 @@ public class GameData : ScriptableObject
     public float EnemyHealth;
     public float ButtonHealth;
     public Color DamageTakenColor;
-    public Color DeadColor;
 }

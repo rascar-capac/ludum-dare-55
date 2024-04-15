@@ -100,6 +100,7 @@ public class Minion : MonoBehaviour
     {
         SetState(EState.None);
         _animator.SetTrigger("die");
+        _health.SpriteRenderer.sortingOrder = -1;
     }
 
     private void Awake()

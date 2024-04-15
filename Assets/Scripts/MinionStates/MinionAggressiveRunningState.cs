@@ -61,7 +61,7 @@ public class MinionAggressiveRunningState : AMinionState
         _minion.SetSpriteDirection(normalizedDirection);
         float dot = Vector2.Dot(Vector2.right, normalizedDirection);
         float ellipsis_factor = Mathf.Lerp(Game.Environment.GetEllipsisFactor(), 1, Mathf.Abs(dot));
-        _minion.transform.Translate(Game.Data.UnitsPerSecondWhenRunning * Time.deltaTime * ellipsis_factor * normalizedDirection);
+        _minion.transform.Translate(Game.Data.UnitsPerSecondWhenRunning * (Random.value + 0.5f) * Time.deltaTime * ellipsis_factor * normalizedDirection);
     }
 
     private void Target_OnDied()

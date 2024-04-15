@@ -9,7 +9,7 @@ public class MinionSpawner : ASpawner
 
         if(SpawnMinions(minionCount))
         {
-            Game.Environment.ButtonBox.PlayFeedback();
+            Game.Environment.ButtonBox.PlayFeedback(signalIntensity01);
         }
 
         Debug.Log($"Signal={signalIntensity01}, spawned {minionCount}");
@@ -24,7 +24,7 @@ public class MinionSpawner : ASpawner
     {
         if(_minionsManager.TryGetNearestMinion(Game.Environment.Origin.position, out Minion nearestMinion))
         {
-            return GetClosestPointOnRadius(nearestMinion.transform.position, Game.Environment.Origin.position, Game.Data.SpawningCircleRadius);
+            return GetClosestPointOnRadius(nearestMinion.transform.position, Game.Environment.Origin.position, Game.Data.SpawningCircleRadius) + Random.insideUnitCircle * 0.1f;
         }
         else
         {

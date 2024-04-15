@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyMinionSpawner : ASpawner
@@ -9,7 +10,10 @@ public class EnemyMinionSpawner : ASpawner
 
     protected override float GetNextAvailableSpawningTime()
     {
-        return Time.time + Game.Data.EnemySpawningPeriod;
+        float period = Mathf.Lerp(Game.Data.MinEnemySpawningPeriod, Game.Data.MaxEnemySpawningPeriod, Time.time / Game.Data.TotalCurveTime);
+        period += period * UnityEngine.Random.Range(-0.2f, 0.2f);
+
+        return Time.time + Mathf.Clamp(period, Game.Data.MaxEnemySpawningPeriod, Game.Data.MinEnemySpawningPeriod);
     }
 
     protected override Vector2 GetSpawningPosition()

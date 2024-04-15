@@ -38,7 +38,7 @@ public class MinionWanderingState : AMinionState
         _minion.SetSpriteDirection(normalizedDirection);
         float dot = Vector2.Dot(Vector2.right, normalizedDirection);
         float ellipsisFactor = Mathf.Lerp(Game.Environment.GetEllipsisFactor(), 1, Mathf.Abs(dot));
-        _minion.transform.Translate(Game.Data.UnitsPerSecondWhenWandering * Time.deltaTime * ellipsisFactor * normalizedDirection);
+        _minion.transform.Translate(Game.Data.UnitsPerSecondWhenWandering  * (Random.value + 0.5f) * Time.deltaTime * ellipsisFactor * normalizedDirection);
 
         if(VectorHelper.Approximately(_minion.transform.position, _currentDestination))
         {

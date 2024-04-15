@@ -13,9 +13,10 @@ public class ButtonBox : MonoBehaviour
 
     private Sprite _normalButtonSprite;
 
-    public void PlayFeedback()
+    public void PlayFeedback(float intensity)
     {
         _pressedFeedback.PlayFeedbacks();
+        _pressedFeedback.FeedbacksIntensity = intensity * 5;
     }
 
     public void UpdateCooldownFeedbacks(float nextAvailableTime)

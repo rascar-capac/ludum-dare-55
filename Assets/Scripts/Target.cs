@@ -32,7 +32,6 @@ public class Target : MonoBehaviour
 
     private void Die()
     {
-        _spriteRenderer.color = Game.Data.DeadColor;
         OnDied.Invoke();
     }
 
@@ -42,7 +41,7 @@ public class Target : MonoBehaviour
 
         yield return new WaitForSeconds(0.1f);
 
-        _spriteRenderer.color = IsDead ? Game.Data.DeadColor : _initialColor;
+        _spriteRenderer.color = _initialColor;
     }
 
     private void Awake()
