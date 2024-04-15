@@ -7,7 +7,7 @@ public class Minion : MonoBehaviour
     public Transform Transform => transform;
     public Target Health => _health;
     public bool IsEnemy => _isEnemy;
-    public bool IsDead => Health.IsDead;
+    public bool IsDead => _health.IsDead;
     public Animator Animator => _animator;
 
     [SerializeField] private bool _isEnemy;
@@ -47,16 +47,16 @@ public class Minion : MonoBehaviour
 
         if(_isEnemy)
         {
-            if(nearestMinionFound && IsAtDefenseDistance(nearestMinion._health))
+            if(nearestMinionFound && IsAtDefenseDistance(nearestMinion.Health))
             {
-                target = nearestMinion._health;
+                target = nearestMinion.Health;
 
                 return true;
             }
 
             if(!Game.Environment.ButtonBox.IsDead)
             {
-                target = Game.Environment.ButtonBox;
+                target = Game.Environment.ButtonBox.Health;
 
                 return true;
             }

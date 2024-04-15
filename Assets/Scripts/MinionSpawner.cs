@@ -6,7 +6,11 @@ public class MinionSpawner : ASpawner
     {
         float signalIntensity01 = Game.Environment.GetSignalIntensity01();
         int minionCount = Mathf.RoundToInt(Mathf.Lerp( Game.Data.MinimumCount, Game.Data.MaximumCount, signalIntensity01));
-        SpawnMinions(minionCount);
+
+        if(SpawnMinions(minionCount))
+        {
+            Game.Environment.ButtonBox.PlayFeedback();
+        }
 
         Debug.Log($"Signal={signalIntensity01}, spawned {minionCount}");
     }
@@ -51,17 +55,6 @@ public class MinionSpawner : ASpawner
         return position;
     }
 
-    private void UpdateCooldownFeedbacks()
-    {
-        if(CanSpawn)
-        {
-            return;
-        }
-
-        Game.Environment.Button.color = Game.Data.ButtonGradient.Evaluate((Time.time - _nextAvailableTime + Game.Data.SpawningCooldown) / Game.Data.SpawningCooldown);
-        //TODO: add spread effect when ready
-    }
-
     private void HandleInput()
     {
         if(Input.GetKeyDown(KeyCode.Space))
@@ -76,7 +69,7 @@ public class MinionSpawner : ASpawner
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            Game.Environment.Fist.transform.position = Game.Environment.Button.transform.position;
+            Game.Environment.Fist.transform.position = Game.Environment.FistDownPosition;
         }
 
         if(Input.GetKeyUp(KeyCode.Space))
@@ -93,6 +86,6 @@ public class MinionSpawner : ASpawner
     private void Update()
     {
         HandleInput();
-        UpdateCooldownFeedbacks();
+        Game.Environment.ButtonBox.UpdateCooldownFeedbacks(_nextAvailableTime);
     }
 }

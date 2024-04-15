@@ -16,11 +16,11 @@ public abstract class ASpawner : MonoBehaviour
     protected abstract Vector2 GetSpawningPosition();
     protected abstract float GetNextAvailableSpawningTime();
 
-    protected void SpawnMinions(int count)
+    protected bool SpawnMinions(int count)
     {
         if(!CanSpawn)
         {
-            return;
+            return false;
         }
 
         for(int minionIndex = 0; minionIndex < count; minionIndex++)
@@ -29,6 +29,8 @@ public abstract class ASpawner : MonoBehaviour
         }
 
         _nextAvailableTime = GetNextAvailableSpawningTime();
+
+        return true;
     }
 
     [ContextMenu("Spawn minion")]

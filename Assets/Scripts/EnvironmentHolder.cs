@@ -4,19 +4,19 @@ public class EnvironmentHolder : MonoBehaviour
 {
     public Transform Origin => _origin;
     public Bounds Platform => _platform.bounds;
-    public Target ButtonBox => _buttonBox;
-    public SpriteRenderer Button => _button;
+    public ButtonBox  ButtonBox => _buttonBox;
     public SpriteRenderer Signal => _signal;
     public SpriteRenderer Fist => _fist;
     public Vector2 FistUpPosition {get; private set;}
+    public Vector2 FistDownPosition => _fistDownPosition.position;
 
     [SerializeField] private Transform _origin;
     [SerializeField] private SpriteRenderer _platform;
-    [SerializeField] private Target _buttonBox;
-    [SerializeField] private SpriteRenderer _button;
+    [SerializeField] private ButtonBox _buttonBox;
     [SerializeField] private SpriteRenderer _signal;
     [SerializeField] private RenderTexture _signalRenderTexture;
     [SerializeField] private SpriteRenderer _fist;
+    [SerializeField] private Transform _fistDownPosition;
 
     public float GetSignalIntensity01()
     {
@@ -36,7 +36,6 @@ public class EnvironmentHolder : MonoBehaviour
     private void Awake()
     {
         FistUpPosition = _fist.transform.position;
-        ButtonBox.Initialize(Game.Data.ButtonHealth);
     }
 
     private void LateUpdate()
