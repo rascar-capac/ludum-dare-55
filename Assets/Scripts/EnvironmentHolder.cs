@@ -5,7 +5,6 @@ public class EnvironmentHolder : MonoBehaviour
     public Transform Origin => _origin;
     public Bounds Platform => _platform.bounds;
     public ButtonBox  ButtonBox => _buttonBox;
-    public SpriteRenderer Signal => _signal;
     public SpriteRenderer Fist => _fist;
     public Vector2 FistUpPosition {get; private set;}
     public Vector2 FistDownPosition => _fistDownPosition.position;
@@ -40,7 +39,7 @@ public class EnvironmentHolder : MonoBehaviour
 
     private void LateUpdate()
     {
-        Graphics.Blit(Game.Environment.Signal.sprite.texture, _signalRenderTexture,  Game.Environment.Signal.material);
+        Graphics.Blit(_signal.sprite.texture, _signalRenderTexture, _signal.material);
     }
 
     private void OnApplicationQuit()
